@@ -87,10 +87,7 @@ void switch_color(list_shape *l)
 
 void switch_form(list_shape *l)
 {
-    Square,
-        Diamond,
-        Circle,
-        Triangle4;
+
     decalage_shape_form square(Square, l);
 
     decalage_shape_form diamond(Diamond, l);
@@ -99,7 +96,6 @@ void switch_form(list_shape *l)
 
     decalage_shape_form triangle(Triangle4, l);
 
-    std::cout << " green ";
     char c = _getch();
     switch (c)
     {

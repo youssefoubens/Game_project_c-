@@ -81,7 +81,7 @@ int list_shape::insert_shape_right(Color c, ShapeType s)
                     newShape->prev_same_color = current;
                     current->next_same_color = newShape;
 
-                                       break;
+                    break;
                 }
 
                 current = current->prev_shap;
@@ -138,7 +138,7 @@ int list_shape::insert_shape_left(Color c, ShapeType s)
                 if (newShape->c == current->c)
                 {
                     newShape->next_same_color = current;
-                    std::cout << "smae colore next";
+                    current->prev_same_color = newShape;
                     break;
                 }
 
@@ -151,7 +151,7 @@ int list_shape::insert_shape_left(Color c, ShapeType s)
                 if (newShape->f == current1->f)
                 {
                     newShape->next_same_form = current1;
-                    std::cout << "smae form next";
+                    current1->prev_same_form = newShape;
                     break;
                 }
 
@@ -329,14 +329,13 @@ adress *list_shape::address_f_l_color(Color c)
                 if (current->next_same_color == nullptr)
                 {
 
-                    std::cout << "|" << colorizeShape(shapeToString(current->f), current->c);
                     temp->tail1 = current;
                     temp->size = size;
                     return temp;
                 }
                 else
                 {
-                    std::cout << " no ";
+
                     size++;
                     current = current->next_same_color;
                 }
@@ -349,19 +348,21 @@ adress *list_shape::address_f_l_color(Color c)
 adress *list_shape::address_f_l_form(ShapeType f)
 {
     shape *current = head;
-    adress *temp;
+    adress *temp = new adress;
     int size = 0;
 
     while (current != nullptr)
     {
         if (current->f == f)
         {
+
             size = 1;
             temp->head1 = current;
+
             while (current != nullptr)
             {
 
-                if (current->next_same_color == nullptr)
+                if (current->next_same_form == nullptr)
                 {
 
                     temp->tail1 = current;
@@ -370,8 +371,9 @@ adress *list_shape::address_f_l_form(ShapeType f)
                 }
                 else
                 {
+
                     size++;
-                    current = current->next_same_color;
+                    current = current->next_same_form;
                 }
             }
         }
