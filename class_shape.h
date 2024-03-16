@@ -1,8 +1,8 @@
 
 struct adress
 {
-    shape *head;
-    shape *tail;
+    shape *head1;
+    shape *tail1;
     int size;
 };
 class list_shape
@@ -50,6 +50,13 @@ list_shape::list_shape()
 int list_shape::insert_shape_right(Color c, ShapeType s)
 {
     shape *newShape = new shape;
+
+    newShape->c = c;
+    newShape->f = s;
+    newShape->next_shape = nullptr;
+    newShape->prev_shap = nullptr;
+    newShape->next_same_color = nullptr;
+    newShape->next_same_form = nullptr;
     if (size == 15)
     {
         std::cout << "impossible d ajouter";
@@ -57,49 +64,50 @@ int list_shape::insert_shape_right(Color c, ShapeType s)
     }
     else
     {
-        size++;
-        newShape->c = c;
-        newShape->f = s;
-        newShape->next_shape = nullptr;
-        newShape->prev_shap = nullptr;
-        newShape->next_same_color = nullptr;
-        newShape->next_same_form = nullptr;
-
-        if (head == nullptr)
+        try
         {
-            head = newShape;
-            tail = newShape;
+            /* code */
+
+            if (head == nullptr)
+            {
+                head = newShape;
+                tail = newShape;
+            }
+            else
+            {
+                shape *current = tail;
+                while (current != nullptr)
+                {
+                    if (newShape->c == current->c)
+                    {
+                        newShape->prev_same_color = current;
+
+                        break;
+                    }
+
+                    current = current->prev_shap;
+                }
+                shape *current1 = tail;
+                while (current1 != nullptr)
+                {
+                    if (newShape->f == current1->f)
+                    {
+                        newShape->prev_same_form = current1;
+
+                        break;
+                    }
+
+                    current1 = current1->prev_shap;
+                }
+
+                tail->next_shape = newShape;
+                newShape->prev_shap = tail;
+                tail = newShape;
+            }
         }
-        else
+        catch (const std::exception &e)
         {
-            shape *current = tail;
-            while (current != nullptr)
-            {
-                if (newShape->c == current->c)
-                {
-                    newShape->prev_same_color = current;
-
-                    break;
-                }
-
-                current = current->prev_shap;
-            }
-            shape *current1 = tail;
-            while (current1 != nullptr)
-            {
-                if (newShape->f == current1->f)
-                {
-                    newShape->prev_same_form = current1;
-
-                    break;
-                }
-
-                current1 = current1->prev_shap;
-            }
-
-            tail->next_shape = newShape;
-            newShape->prev_shap = tail;
-            tail = newShape;
+            std::cerr << e.what() << '\n';
         }
 
         return 1;
@@ -319,7 +327,7 @@ adress *list_shape::address_f_l_color(Color c)
         {
 
             size = 1;
-            temp->head = current;
+            temp->head1 = current;
 
             while (current != nullptr)
             {
@@ -328,7 +336,7 @@ adress *list_shape::address_f_l_color(Color c)
                 {
 
                     std::cout << "|" << colorizeShape(shapeToString(current->f), current->c);
-                    temp->tail = current;
+                    temp->tail1 = current;
                     temp->size = size;
                     return temp;
                 }
@@ -355,14 +363,14 @@ adress *list_shape::address_f_l_form(ShapeType f)
         if (current->f == f)
         {
             size = 1;
-            temp->head = current;
+            temp->head1 = current;
             while (current != nullptr)
             {
 
                 if (current->next_same_color == nullptr)
                 {
 
-                    temp->tail = current;
+                    temp->tail1 = current;
                     temp->size = size;
                     return temp;
                 }

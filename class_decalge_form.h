@@ -25,8 +25,8 @@ int decalage_shape_form::decaler_form()
 {
     shape *head, *current, *temp;
     shape *tail;
-    head = adr->head;
-    tail = adr->tail;
+    head = adr->head1;
+    tail = adr->tail1;
 
     temp->c = head->c;
     if (adr->size < 2)

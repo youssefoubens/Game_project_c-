@@ -47,16 +47,17 @@ shape generateRandomShape()
     return randomShape;
 }
 
-void switch_color(list_shape l)
+void switch_color(list_shape *l)
 {
 
-    decalage_shape_color *blue = new decalage_shape_color(Blue, l);
+    decalage_shape_color blue(Blue, l);
     std::cout << " blue ";
-    decalage_shape_color *yellow = new decalage_shape_color(Yellow, l);
+    decalage_shape_color yellow(Yellow, l);
     std::cout << " yellow ";
-    decalage_shape_color *red = new decalage_shape_color(Red, l);
+    decalage_shape_color red(Red, l);
     std::cout << " red ";
-    decalage_shape_color *green = new decalage_shape_color(Green, l);
+    decalage_shape_color green(Green, l);
+
     std::cout << " green ";
     char c = _getch();
     switch (c)
@@ -71,16 +72,16 @@ void switch_color(list_shape l)
         break;
     case 'y':
 
-        // yellow->decaler_color();
+        yellow.decaler_color();
         std::cout << " yellow ";
         break;
     case 'a':
 
-        red->decaler_color();
+        red.decaler_color();
         std::cout << " red ";
         break;
     case 'g':
-        green->decaler_color();
+        green.decaler_color();
         std::cout << " green ";
         break;
     default:
@@ -147,7 +148,7 @@ int main()
             break;
             ;
         case 'd':
-            switch_color(shapeList);
+            switch_color(&shapeList);
 
             break;
             ;
