@@ -51,14 +51,13 @@ void switch_color(list_shape *l)
 {
 
     decalage_shape_color blue(Blue, l);
-    std::cout << " blue ";
+
     decalage_shape_color yellow(Yellow, l);
-    std::cout << " yellow ";
+
     decalage_shape_color red(Red, l);
-    std::cout << " red ";
+
     decalage_shape_color green(Green, l);
 
-    std::cout << " green ";
     char c = _getch();
     switch (c)
     {
@@ -66,30 +65,65 @@ void switch_color(list_shape *l)
 
         blue.decaler_color();
 
-        getch();
-
         break;
     case 'y':
 
         yellow.decaler_color();
 
-        std::cout << " yellow ";
         break;
     case 'a':
 
         red.decaler_color();
 
-        std::cout << " red ";
         break;
     case 'g':
         green.decaler_color();
-        std::cout << " green ";
+
         break;
     default:
         break;
     }
 }
 
+void switch_form(list_shape *l)
+{
+    Square,
+        Diamond,
+        Circle,
+        Triangle4;
+    decalage_shape_form square(Square, l);
+
+    decalage_shape_form diamond(Diamond, l);
+
+    decalage_shape_form circle(Circle, l);
+
+    decalage_shape_form triangle(Triangle4, l);
+
+    std::cout << " green ";
+    char c = _getch();
+    switch (c)
+    {
+    case 's':
+
+        square.decaler_form();
+
+        break;
+    case 'i':
+        diamond.decaler_form();
+
+        break;
+    case 'e':
+
+        circle.decaler_form();
+        break;
+    case 't':
+        triangle.decaler_form();
+
+        break;
+    default:
+        break;
+    }
+}
 int main()
 {
     list_shape shapeList;
@@ -150,6 +184,11 @@ int main()
             ;
         case 'd':
             switch_color(&shapeList);
+
+            break;
+            ;
+        case 'z':
+            switch_form(&shapeList);
 
             break;
             ;

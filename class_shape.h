@@ -65,8 +65,6 @@ int list_shape::insert_shape_right(Color c, ShapeType s)
     else
     {
 
-        /* code */
-
         if (head == nullptr)
         {
             head = newShape;
@@ -75,13 +73,15 @@ int list_shape::insert_shape_right(Color c, ShapeType s)
         else
         {
             shape *current = tail;
+
             while (current != nullptr)
             {
                 if (newShape->c == current->c)
                 {
                     newShape->prev_same_color = current;
+                    current->next_same_color = newShape;
 
-                    break;
+                                       break;
                 }
 
                 current = current->prev_shap;
@@ -92,7 +92,7 @@ int list_shape::insert_shape_right(Color c, ShapeType s)
                 if (newShape->f == current1->f)
                 {
                     newShape->prev_same_form = current1;
-
+                    current1->next_same_form = newShape;
                     break;
                 }
 
