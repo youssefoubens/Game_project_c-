@@ -1,3 +1,4 @@
+// the main class of list of shape
 
 struct adress
 {

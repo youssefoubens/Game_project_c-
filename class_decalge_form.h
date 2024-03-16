@@ -1,5 +1,5 @@
 
-
+// this class for decaler les shapes de meme form
 class decalage_shape_form
 {
 private:

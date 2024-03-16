@@ -1,5 +1,5 @@
 
-
+// this class for decaler les shapes de meme color
 class decalage_shape_color
 {
 private:

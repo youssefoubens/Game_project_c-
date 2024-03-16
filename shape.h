@@ -1,3 +1,5 @@
+// here you can add color or form
+
 enum Color
 {
     Blue,
