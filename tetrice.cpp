@@ -64,8 +64,7 @@ void switch_color(list_shape *l)
     {
     case 'b':
 
-        // blue->decaler_color();
-        // blue->~decalage_shape_color();
+        blue.decaler_color();
 
         getch();
 
@@ -73,11 +72,13 @@ void switch_color(list_shape *l)
     case 'y':
 
         yellow.decaler_color();
+
         std::cout << " yellow ";
         break;
     case 'a':
 
         red.decaler_color();
+
         std::cout << " red ";
         break;
     case 'g':
@@ -93,13 +94,13 @@ int main()
 {
     list_shape shapeList;
     shape s;
-    shapeList.insert_shape_right(Yellow, Diamond);
+    shapeList.insert_shape_left(Yellow, Diamond);
 
-    shapeList.insert_shape_right(Red, Circle);
+    shapeList.insert_shape_left(Red, Circle);
 
-    shapeList.insert_shape_right(Yellow, Circle);
-    shapeList.insert_shape_right(Blue, Square);
-    shapeList.insert_shape_right(Blue, Diamond);
+    shapeList.insert_shape_left(Yellow, Circle);
+    shapeList.insert_shape_left(Blue, Square);
+    shapeList.insert_shape_left(Blue, Diamond);
     shapeList.display_same_form();
 
     s = generateRandomShape();

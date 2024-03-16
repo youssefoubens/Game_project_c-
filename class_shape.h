@@ -64,52 +64,46 @@ int list_shape::insert_shape_right(Color c, ShapeType s)
     }
     else
     {
-        try
+
+        /* code */
+
+        if (head == nullptr)
         {
-            /* code */
-
-            if (head == nullptr)
+            head = newShape;
+            tail = newShape;
+        }
+        else
+        {
+            shape *current = tail;
+            while (current != nullptr)
             {
-                head = newShape;
-                tail = newShape;
-            }
-            else
-            {
-                shape *current = tail;
-                while (current != nullptr)
+                if (newShape->c == current->c)
                 {
-                    if (newShape->c == current->c)
-                    {
-                        newShape->prev_same_color = current;
+                    newShape->prev_same_color = current;
 
-                        break;
-                    }
-
-                    current = current->prev_shap;
-                }
-                shape *current1 = tail;
-                while (current1 != nullptr)
-                {
-                    if (newShape->f == current1->f)
-                    {
-                        newShape->prev_same_form = current1;
-
-                        break;
-                    }
-
-                    current1 = current1->prev_shap;
+                    break;
                 }
 
-                tail->next_shape = newShape;
-                newShape->prev_shap = tail;
-                tail = newShape;
+                current = current->prev_shap;
             }
-        }
-        catch (const std::exception &e)
-        {
-            std::cerr << e.what() << '\n';
-        }
+            shape *current1 = tail;
+            while (current1 != nullptr)
+            {
+                if (newShape->f == current1->f)
+                {
+                    newShape->prev_same_form = current1;
 
+                    break;
+                }
+
+                current1 = current1->prev_shap;
+            }
+
+            tail->next_shape = newShape;
+            newShape->prev_shap = tail;
+            tail = newShape;
+        }
+        size++;
         return 1;
     }
 }

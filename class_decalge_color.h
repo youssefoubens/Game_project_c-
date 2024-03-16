@@ -23,7 +23,7 @@ int decalage_shape_color::decaler_color()
     shape *tail;
     head = adr->head1;
     tail = adr->tail1;
-    std::cout << adr->size;
+
     temp.f = head->f;
     if (adr->size < 2)
     {
@@ -35,8 +35,7 @@ int decalage_shape_color::decaler_color()
     while (current != nullptr)
     {
 
-        current->f = current->next_same_form->f;
-        std::cout << "|" << colorizeShape(shapeToString(current->f), current->c);
+        current->f = current->next_same_color->f;
         current = current->next_same_color;
         if (current->next_same_color == nullptr)
         {
@@ -44,5 +43,4 @@ int decalage_shape_color::decaler_color()
         }
     }
     tail->f = temp.f;
-    getch();
 }
